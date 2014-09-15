@@ -2,16 +2,15 @@ import sbt._
 import Keys._
 
 object MyBuild extends Build {
+  import Dependencies._
+
   val NamePrefix = "MyProject-"
 
-  println(new java.io.File(".").getAbsolutePath)
+  lazy val api = project.settings(Common.settings: _*).settings(libraryDependencies ++= apiDependencies)
 
-  lazy val api = project
+  lazy val client = project.dependsOn(api).settings(Common.settings: _*).settings(libraryDependencies ++= clientDependencies)
 
-  lazy val client = project.dependsOn(api)
+  lazy val server = project.dependsOn(api).settings(Common.settings: _*).settings(libraryDependencies ++= serverDependencies)
 
-  lazy val server = project.dependsOn(api)
-
-  lazy val root = (project in file(".")).
-    aggregate(api, client, server)
+  lazy val root = (project in file(".")).aggregate(api, client, server)
 }

@@ -1,7 +1,10 @@
 object ClientMain {	
 	def main(a : Array[String]) {
-	  val echo : Echo = new Echo {
+		val e = newEcho
+		a.map(e.echo).foreach(println)
+	}
+
+	def newEcho = new Echo {
 	     override def echo(s : String) = "client:" + s
-	  }
 	}
 }
