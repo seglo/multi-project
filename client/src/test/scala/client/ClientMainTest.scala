@@ -1,3 +1,5 @@
+package client
+
 import org.scalatest._
 
 class ClientMainTest extends FunSpec {

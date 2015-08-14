@@ -1,3 +1,5 @@
+package api
+
 import org.scalatest._
 
 class EchoTest extends FunSpec {

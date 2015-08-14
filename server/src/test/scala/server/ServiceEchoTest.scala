@@ -1,4 +1,7 @@
+package server
+
 import org.scalatest._
+import api._
 
 class ServiceEchoTest extends FunSpec {
 	describe("ServiceEcho.echo") {

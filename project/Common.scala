@@ -6,6 +6,7 @@ object Common {
 
   val settings: Seq[Def.Setting[_]] = Seq(
     version := appVersion,
+    scalaVersion := "2.11.6",
     resolvers += Opts.resolver.mavenLocalFile
   )
 }

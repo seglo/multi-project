@@ -1,3 +1,7 @@
+package client
+
+import api._
+
 object ClientMain {	
 	def main(a : Array[String]) {
 		val e = newEcho

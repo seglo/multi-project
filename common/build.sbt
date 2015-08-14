@@ -1,0 +1,1 @@
+name := MyBuild.NamePrefix + "common"
