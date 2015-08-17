@@ -10,7 +10,8 @@ object Dependencies {
 
   val commonDependencies: Seq[ModuleID] = Seq(
     scalaTest,
-    slf4jNop
+    slf4jNop,
+    "org.threeten" % "threetenbp" % "1.3"
   )
 
   val sparkVersion = "1.4.1"
