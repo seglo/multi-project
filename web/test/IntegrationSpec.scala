@@ -1,24 +1,33 @@
-import org.specs2.mutable._
-import org.specs2.runner._
 import org.junit.runner._
-
-import play.api.test._
-import play.api.test.Helpers._
+import org.scalatest.{WordSpecLike, BeforeAndAfterAll, WordSpec, Matchers}
+import org.scalatest.junit.JUnitRunner
+import play.test.WithBrowser
 
 /**
  * add your integration spec here.
  * An integration test will fire up a whole play application in a real (or headless) browser
  */
 @RunWith(classOf[JUnitRunner])
-class IntegrationSpec extends Specification {
+class IntegrationSpec extends WithBrowser with WordSpecLike with Matchers with BeforeAndAfterAll {
+
+  override def beforeAll = {
+    super.beforeAll()
+    startServer
+    createBrowser
+  }
+
+  override def afterAll = {
+    stopServer
+    quitBrowser
+  }
 
   "Application" should {
 
-    "work from within a browser" in new WithBrowser {
+    "work from within a browser" in {
 
       browser.goTo("http://localhost:" + port)
 
-      browser.pageSource must contain("Your new application is ready.")
+      browser.pageSource should include("Your new application is ready.")
     }
   }
 }

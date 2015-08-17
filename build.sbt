@@ -24,7 +24,7 @@ lazy val domain = project.
     settings(libraryDependencies ++= Dependencies.domainDependencies)
 
 lazy val web = project.
-    dependsOn(api, common).
+    dependsOn(api, common, domain % "test->test;compile->compile").
     settings(Common.settings: _*).
     settings(libraryDependencies ++= Dependencies.webDependencies).
     enablePlugins(PlayScala)
