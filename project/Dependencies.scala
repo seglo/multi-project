@@ -15,13 +15,19 @@ object Dependencies {
 
   
   val json : Seq[ModuleID] = Seq(
-      "io.argonaut" %% "argonaut" % "6.1-M4" changing(),
+      "io.argonaut" %% "argonaut" % "6.0.4",
       "com.propensive" %% "rapture-json-argonaut" % "1.1.0",
-      "com.typesafe.play" %% "play-json" % "3.0")
+      "com.typesafe.play" %% "play-json" % "2.4.2")
 
   val apiDependencies    : Seq[ModuleID] = commonDependencies
-  val serverDependencies : Seq[ModuleID] = commonDependencies
+  val domainDependencies : Seq[ModuleID] = commonDependencies
   val clientDependencies : Seq[ModuleID] = commonDependencies
+  val searchDependencies : Seq[ModuleID] = commonDependencies ++ Seq(
+    "com.sksamuel.elastic4s" %% "elastic4s-core" %  "1.7.0")
+  val sparkDependencies  : Seq[ModuleID] = commonDependencies ++ Seq(
+    "org.apache.spark" %% "spark-core" % "1.4.1" ,//% "provided",
+    "oro" % "oro" % "2.0.8", 
+    "commons-collections" % "commons-collections" % "3.2.1")
   val webDependencies    : Seq[ModuleID] = commonDependencies ++ json ++ {
     Seq(
       //jdbc,
