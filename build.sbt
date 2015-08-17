@@ -2,7 +2,7 @@ name := MyBuild.NamePrefix + "root"
 
 version := "0.0.1"
 
-scalaVersion := "2.11.6"
+scalaVersion := "2.11.7"
 
 resolvers += "scalaz-bintray" at "http://dl.bintray.com/scalaz/releases"
 
