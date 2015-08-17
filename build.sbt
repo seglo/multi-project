@@ -4,6 +4,8 @@ version := "0.0.1"
 
 scalaVersion := "2.11.6"
 
+resolvers += "scalaz-bintray" at "http://dl.bintray.com/scalaz/releases"
+
 lazy val common = project.
     settings(Common.settings: _*)
 
@@ -24,7 +26,8 @@ lazy val server = project.
 lazy val web = project.
     dependsOn(api, common).
     settings(Common.settings: _*).
-    settings(libraryDependencies ++= Dependencies.serverDependencies)
+    settings(libraryDependencies ++= Dependencies.webDependencies)
 
 lazy val root = (project in file(".")).
-    aggregate(api, common, client, server, web)
+    aggregate(api, common, client, server, web).
+    enablePlugins(PlayScala)
